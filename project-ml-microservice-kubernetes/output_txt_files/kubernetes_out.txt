@@ -1,1 +1,30 @@
 <paste log output from Kubernetes-mediated prediction, here>
+(.devops) voclabs:~/environment/devops/project-ml-microservice-kubernetes (main) $ kubectl get pods
+No resources found in default namespace.
+(.devops) voclabs:~/environment/devops/project-ml-microservice-kubernetes (main) $ ./run_kubernetes.sh pod/development created
+NAME          READY   STATUS    RESTARTS   AGE
+development   0/1     Pending   0          1s
+error: unable to forward port because pod is not running. Current status=Pending
+(.devops) voclabs:~/environment/devops/project-ml-microservice-kubernetes (main) $ kubectl get pods
+NAME          READY   STATUS    RESTARTS   AGE
+development   1/1     Running   0          49s
+(.devops) voclabs:~/environment/devops/project-ml-microservice-kubernetes (main) $ ./run_kubernetes.sh 
+Error from server (AlreadyExists): pods "development" already exists
+NAME          READY   STATUS    RESTARTS   AGE
+development   1/1     Running   0          56s
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
+
+
+voclabs:~/environment/devops/project-ml-microservice-kubernetes (main) $ ./make_prediction.sh 
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+voclabs:~/environment/devops/project-ml-microservice-kubernetes (main) $ 
+
+
+
